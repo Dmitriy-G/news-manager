@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+
+    <script src="main.js" th:src="@{main.js}"></script>
+    <link  rel="stylesheet" href="main.css" th:href="@{main.css}"/>
+
+    <head>
+<body ng-app="NewsManagement" ng-controller="NewsController">
+<h3>
+    News manager
+</h3>
+<form ng-submit="submitNews()">
+    <table border="0">
+        <tr>
+            <td>News Id</td>
+            <td>{{news.id}}</td>
+        </tr>
+        <tr>
+            <td>News Name</td>
+            <td><input type="text" ng-model="news.name" /></td>
+        </tr>
+        <tr>
+            <td>News Content</td>
+            <td><input type="text" ng-model="news.content"  /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Submit" class="blue-button" />
+            </td>
+        </tr>
+    </table>
+</form>
+<br/>
+<a class="create-button" ng-click="createNews()">Create News</a>
+<table border="1">
+    <tr>
+        <th>News Id</th>
+        <th>News Name</th>
+        <th>News Content</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <!-- $scope.news -->
+    <tr ng-repeat="news in newsList">
+        <td> {{ news.id}}</td>
+        <td> {{ news.name }}</td>
+        <td> {{ news.content }}</td>
+        <td>
+            <a ng-click="editNews(news)" class="edit-button">Edit</a>
+        </td>
+        <td>
+            <a ng-click="deleteNews(news)" class="delete-button">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
