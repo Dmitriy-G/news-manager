@@ -27,6 +27,10 @@
             <td><input type="text" ng-model="news.content"  /></td>
         </tr>
         <tr>
+            <td>News Category</td>
+            <td><input type="text" ng-model="news.category"  /></td>
+        </tr>
+        <tr>
             <td colspan="2">
                 <input type="submit" value="Submit" class="blue-button" />
             </td>
@@ -35,19 +39,24 @@
 </form>
 <br/>
 <a class="create-button" ng-click="createNews()">Create News</a>
+
 <table border="1">
     <tr>
         <th>News Id</th>
+        <th>News Date</th>
         <th>News Name</th>
         <th>News Content</th>
+        <th>News Category</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
     <!-- $scope.news -->
     <tr ng-repeat="news in newsList">
         <td> {{ news.id}}</td>
+        <td> {{ news.datePublished}}</td>
         <td> {{ news.name }}</td>
         <td> {{ news.content }}</td>
+        <td> {{ news.category}}</td>
         <td>
             <a ng-click="editNews(news)" class="edit-button">Edit</a>
         </td>
@@ -56,5 +65,8 @@
         </td>
     </tr>
 </table>
+<md-select ng-model="" ng-if="textBoxModel == ''">
+    <md-option ng-repeat="news in newsList" value="{{news}}">{{news}}</md-option>
+</md-select>
 </body>
 </html>

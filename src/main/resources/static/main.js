@@ -8,7 +8,8 @@ app.controller("NewsController", function($scope, $http) {
     $scope.news = {
         id: 1,
         name: "",
-        content: ""
+        content: "",
+        category: ""
     };
 
     // Now load the data from server
@@ -42,6 +43,18 @@ app.controller("NewsController", function($scope, $http) {
         _clearFormData();
     }
 
+    $scope.findNews = function() {
+        $http({
+            method: "GET",
+            url: "/find/"+$scope.news.name+"&"+$scope.news.content+"&"+$scope.news.category,
+            data: angular.toJson($scope.news),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(_success, _error);
+        _refreshNewsData();
+    }
+
     // HTTP DELETE- delete news by Id
     // Call: http://localhost:8080/list/{newsId}
     $scope.deleteNews = function(news) {
@@ -56,6 +69,7 @@ app.controller("NewsController", function($scope, $http) {
         $scope.news.id = editNews.id;
         $scope.news.name = editNews.name;
         $scope.news.content = editNews.content;
+        $scope.news.category = editNews.category;
     };
 
     // Private Method
@@ -93,5 +107,6 @@ app.controller("NewsController", function($scope, $http) {
         $scope.news.id = -1;
         $scope.news.name = "";
         $scope.news.content = ""
+        $scope.news.category = ""
     }
 });

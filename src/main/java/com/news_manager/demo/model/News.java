@@ -1,6 +1,8 @@
 package com.news_manager.demo.model;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,13 +30,16 @@ public class News implements Serializable {
     @Column(name = "date")
     private Date datePublished;
 
+    @Column(name = "category")
+    private String category;
+
+
     public News() {
     }
 
     public News(String name) {
         this.name = name;
     }
-
 
 
     public Integer getId() {
@@ -69,6 +74,13 @@ public class News implements Serializable {
         this.datePublished = datePublished;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     @Override
     public boolean equals(Object o) {

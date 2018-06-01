@@ -11,6 +11,13 @@ table td, th  {
     cursor: pointer;
     padding: 5px;
 }
+
+.find-button  {
+    color: blue;
+    cursor: pointer;
+    padding: 5px;
+}
+
 .edit-button  {
     padding: 2px 5px;
     background: #25A6E1;
